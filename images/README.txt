@@ -1,0 +1,1 @@
+Place your profile picture in this folder and name it "mypic.jpeg" (or update the paths in the HTML files accordingly).
