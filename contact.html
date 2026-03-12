@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Swati Janawade Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-text .name {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .logo-text .role {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== CONTENT ===== */
+        .page-content {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            min-height: 100vh;
+            padding: 4rem 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .page-title {
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .contact-wrapper {
+            max-width: 700px;
+            width: 100%;
+        }
+        
+        .contact-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.8s ease;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            color: #a855f7;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-info p {
+            color: #555;
+            font-size: 1rem;
+        }
+        
+        .contact-info a {
+            color: #a855f7;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: #ec4899;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+            justify-content: center;
+        }
+        
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .social-btn.github {
+            background: #1a1a1a;
+        }
+        
+        .social-btn.github:hover {
+            border-color: #1a1a1a;
+            background: transparent;
+            color: #1a1a1a;
+        }
+        
+        .social-btn.linkedin {
+            background: #0a66c2;
+        }
+        
+        .social-btn.linkedin:hover {
+            border-color: #0a66c2;
+            background: transparent;
+            color: #0a66c2;
+        }
+        
+        .social-btn.email {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+        }
+        
+        .social-btn.email:hover {
+            border-color: #a855f7;
+            background: transparent;
+            color: #a855f7;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .cta-section h4 {
+            color: #a855f7;
+            margin-bottom: 1rem;
+        }
+        
+        .email-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .email-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            font-weight: 500;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-content {
+                padding: 2rem 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .contact-box {
+                padding: 2rem;
+            }
+            
+            .contact-item {
+                margin-bottom: 1.5rem;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="C:\Users\Swati Janawade\OneDrive\Pictures\imagesjpg\sss.jpg.jpeg" alt="Swati's Logo" class="logo-img">
+            <div class="logo-text">
+                <div class="name">Swati</div>
+                <div class="role">Portfolio</div>
+            </div>
+        </a>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="page-content">
+        <h1 class="page-title">Get In Touch</h1>
+        
+        <div class="contact-wrapper">
+            <div class="contact-box">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p><a href="mailto:janawadeswati@gmail.com">janawadeswati@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>GitHub</h3>
+                        <p><a href="https://github.com/Swati23216" target="_blank">github.com/Swati23216</a></p>
+                        <p style="font-size: 0.9rem; color: #888; margin-top: 0.3rem;">View all my repositories & code</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://linkedin.com/in/swati-janawade-4a983a37b" target="_blank">linkedin.com/in/swati-janawade</a></p>
+                    </div>
+                </div>
+
+               
+
+                <div class="social-links">
+                    <a href="https://github.com/Swati23216" target="_blank" class="social-btn github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/swati-janawade-4a983a37b" target="_blank" class="social-btn linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:janawadeswati@gmail.com" class="social-btn email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+
+                <div class="cta-section">
+                    
+                    <a href="mailto:janawadeswati@gmail.com" class="email-btn">
+                        <i class="fas fa-envelope"></i> Send Me an Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Swati Janawade | Developer Portfolio | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

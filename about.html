@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Swati Janawade Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-text .name {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .logo-text .role {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== CONTENT ===== */
+        .page-content {
+            background: #6a0dad; /* purple background */
+            min-height: 100vh;
+            padding: 4rem 5%;
+            margin-top: 0;
+        }
+        
+        /* alternating section colors with purple accents */
+        .about-section:nth-child(odd) {
+            background: linear-gradient(135deg, #6a0dad 0%, #8a2be2 100%);
+        }
+        .about-section:nth-child(even) {
+            background: linear-gradient(135deg, #9932cc 0%, #6a0dad 100%);
+        }
+        
+        .page-title {
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .about-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            animation: slideUp 0.8s ease;
+            transition: all 0.3s ease;
+        }
+        
+        .about-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Different color themes for each section */
+        .about-section:nth-child(1) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .about-section:nth-child(1) h3 {
+            color: #ffffff;
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .about-section:nth-child(1) p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .about-section:nth-child(2) {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .about-section:nth-child(2) h3 {
+            color: #ffffff;
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .about-section:nth-child(2) p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .about-section:nth-child(3) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .about-section:nth-child(3) h3 {
+            color: #ffffff;
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .about-section:nth-child(3) p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .about-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .about-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .skill-item::before {
+            content: '✓';
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            font-weight: 500;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 5%;
+            }
+            
+            .about-section {
+                padding: 1.5rem;
+            }
+            
+            .about-section h3 {
+                font-size: 1.2rem;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="C:\Users\Swati Janawade\OneDrive\Pictures\imagesjpg\sss.jpg.jpeg" alt="Swati's Logo" class="logo-img">
+            <div class="logo-text">
+                <div class="name">Swati</div>
+                <div class="role">Portfolio</div>
+            </div>
+        </a>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="page-content">
+        <h1 class="page-title">About Me</h1>
+        
+        <div class="content-wrapper">
+            <div class="about-section">
+                <h3>About Me</h3>
+                <p>
+                    I'm Swati Janawade, an MCA student passionate about technology and innovation. 
+                    I love solving complex problems using Python, Machine Learning, and modern web technologies.
+                </p>
+                <p>
+                    My goal is to create intelligent applications that make a real-world impact.
+                </p>
+            </div>
+
+            <div class="about-section">
+                <h3>My Expertise</h3>
+                <p>I specialize in:</p>
+                <div class="skills-list">
+                    <div class="skill-item">Python Development</div>
+                    <div class="skill-item">Machine Learning</div>
+                    <div class="skill-item">Web Development</div>
+                    <div class="skill-item">Data Analysis</div>
+                    <div class="skill-item">MERN Stack</div>
+                    <div class="skill-item">Database Design</div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h3>My Vision</h3>
+                <p>
+                    I aim to leverage cutting-edge technology to create innovative solutions that solve real problems. 
+                    My journey is about continuous learning and pushing the boundaries of what's possible.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Swati Janawade | Developer Portfolio | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

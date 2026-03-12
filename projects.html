@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Swati Janawade Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-text .name {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .logo-text .role {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== CONTENT ===== */
+        .page-content {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 4rem 5%;
+        }
+        
+        .page-title {
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: slideUp 0.8s ease;
+            height: 350px;
+            cursor: pointer;
+            background: #000;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+            opacity: 0.3;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-card h3 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-description {
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            font-size: 0.8rem;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .project-links a {
+            color: #ffffff;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+            position: relative;
+            z-index: 3;
+        }
+        
+        .project-links a:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+        
+        .github-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem auto;
+            display: block;
+            text-align: center;
+            max-width: 300px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
+        }
+        
+        .see-more-btn {
+            display: inline-block;
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem auto;
+            display: block;
+            text-align: center;
+            max-width: 300px;
+            transition: all 0.3s ease;
+            border: 2px solid #ffffff;
+            background: transparent;
+            font-size: 1rem;
+        }
+        
+        .see-more-btn:hover {
+            background: #ffffff;
+            color: #f5576c;
+            transform: translateY(-3px);
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            font-weight: 500;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .project-card {
+                height: 300px;
+            }
+            
+            .project-overlay {
+                padding: 1.5rem;
+            }
+            
+            .project-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .project-description {
+                font-size: 0.85rem;
+            }
+            
+            .see-more-btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .projects-container {
+                gap: 1rem;
+            }
+            
+            .project-card {
+                height: 250px;
+            }
+            
+            .project-links {
+                gap: 0.5rem;
+            }
+            
+            .project-links a {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="C:\Users\Swati Janawade\OneDrive\Pictures\imagesjpg\sss.jpg.jpeg" alt="Swati's Logo" class="logo-img">
+            <div class="logo-text">
+                <div class="name">Swati</div>
+                <div class="role">Portfolio</div>
+            </div>
+        </a>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="page-content">
+        <h1 class="page-title">My Projects</h1>
+        
+        <div class="projects-container">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=500&h=400&fit=crop" alt="Crop Yield Prediction" class="project-image">
+                <div class="project-overlay">
+                    <h3>Crop Yield Prediction</h3>
+                    <p class="project-description">Machine learning system that predicts the most suitable crop using weather and soil conditions for optimal farming outcomes.</p>
+                    <div class="project-links">
+                        <a href="crop.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=400&fit=crop" alt="Agriculture Market Price Predictor" class="project-image">
+                <div class="project-overlay">
+                    <h3>Market Price Predictor</h3>
+                    <p class="project-description">Predicts agricultural crop prices using machine learning algorithms and provides real-time market insights for traders.</p>
+                    <div class="project-links">
+                        <a href="market.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=400&fit=crop" alt="E-Commerce Web Application" class="project-image">
+                <div class="project-overlay">
+                    <h3>E-Commerce Application</h3>
+                    <p class="project-description">MERN stack shopping platform with secure authentication, interactive cart system, and integrated payment gateway solutions.</p>
+                    <div class="project-links">
+                        <a href="#projects">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#projects" class="see-more-btn">See more</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Swati Janawade | Developer Portfolio | All Rights Reserved</p>
+    </footer>
+
+
+</body>
+</html>
